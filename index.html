@@ -12,10 +12,10 @@
 
 <div class="jumbotron text-center">
     <h1>Random number generator</h1>
-    <p>Practise and improve your speaking skills for your studies. I hope this makes you feel more confident when taking the test for real.</p>
+    <p>Practise and improve your speaking skills for your studies. I hope this makes you feel more confident when taking the test.</p>
 </div>
 
-<div class="container">
+<div class="container" style="margin: 30px 0;">
     <div class="d-flex flex-column">
         <div class="p-2">
             <div class="btn-group btn-group-justified">
@@ -37,18 +37,17 @@
         </div>
 
         <div class="p-2">
-            <button type="button" class="btn btn-primary" onclick="generateNumberByLevel()">Generate</button>
+            <h1 id="generatedNumber" class="text-center" style="font-size: 4rem"> 0</h1>
         </div>
 
         <div class="p-2">
-            <h1 id="generatedNumber"></h1>
+            <button type="button" class="btn btn-primary btn-block" onclick="generateNumberByLevel()">Generate</button>
         </div>
 
     </div>
 </div>
 
 </body>
-
 
 <script>
     function generateNumberByLevel(level) {
@@ -82,7 +81,7 @@
         document.getElementById("min").value = min;
         document.getElementById("max").value = max;
 
-        var generatedNumber =Math.floor(Math.random() * (+max - +min)) + +min;
+        var generatedNumber = Math.floor(Math.random() * (+max - +min)) + +min;
         document.getElementById("generatedNumber").innerHTML = numberWithCommas(generatedNumber);
     }
 
