@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Bootstrap Example</title>
+    <title>Random number generator</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -11,29 +11,95 @@
 <body>
 
 <div class="jumbotron text-center">
-    <h1>My First Bootstrap Page</h1>
-    <p>Resize this responsive page to see the effect!</p>
+    <h1>Random number generator</h1>
+    <p>Practise and improve your speaking skills for your studies. I hope this makes you feel more confident when taking the test for real.</p>
 </div>
 
 <div class="container">
-    <div class="row">
-        <div class="col-sm-4">
-            <h3>Column 1</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+    <div class="d-flex flex-column">
+        <div class="p-2">
+            <div class="btn-group btn-group-justified">
+                <a href="#" class="btn btn-primary" onclick="generateNumberByLevel(1)">1 - 1000</a>
+                <a href="#" class="btn btn-primary" onclick="generateNumberByLevel(2)">1,000 - 100,000</a>
+                <a href="#" class="btn btn-primary" onclick="generateNumberByLevel(3)">100,000 - 1,000,000</a>
+                <a href="#" class="btn btn-primary" onclick="generateNumberByLevel(4)">1,000,000 - 1,000,000,000</a>
+                <a href="#" class="btn btn-primary" onclick="generateNumberByLevel(5)">random</a>
+            </div>
         </div>
-        <div class="col-sm-4">
-            <h3>Column 2</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+
+        <div class="p-2">
+            <div class="form-group">
+                <label for="min">Min</label>
+                <input type="number" class="form-control" id="min" value="1">
+                <label for="max">Max</label>
+                <input type="number" class="form-control" id="max" value="100">
+            </div>
         </div>
-        <div class="col-sm-4">
-            <h3>Column 3</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+
+        <div class="p-2">
+            <button type="button" class="btn btn-primary" onclick="generateNumberByLevel()">Generate</button>
         </div>
+
+        <div class="p-2">
+            <h1 id="generatedNumber"></h1>
+        </div>
+
     </div>
 </div>
 
 </body>
+
+
+<script>
+    function generateNumberByLevel(level) {
+        let min =0 , max =10;
+
+        switch(level) {
+            case 1:
+                min = 1;
+                max = 1000;
+                break;
+            case 2:
+                min = 1000;
+                max = 100000;
+                break;
+            case 3:
+                min = 100000;
+                max = 1000000;
+                break;
+            case 4:
+                min = 1000000;
+                max = 1000000000;
+                break;
+            case 5:
+                min = 0;
+                max = 1000000000;
+                break;
+            default:
+                min = document.getElementById("min").value;
+                max = document.getElementById("max").value;
+        }
+        document.getElementById("min").value = min;
+        document.getElementById("max").value = max;
+
+        var generatedNumber =Math.floor(Math.random() * (+max - +min)) + +min;
+        document.getElementById("generatedNumber").innerHTML = numberWithCommas(generatedNumber);
+    }
+
+    function numberWithCommas(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+</script>
+
+<!-- Footer -->
+<footer class="page-footer font-small blue">
+
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">© 2019 Copyright:
+        <a href="https://mdbootstrap.com/education/bootstrap/"> Kwon</a>
+    </div>
+    <!-- Copyright -->
+
+</footer>
+<!-- Footer -->
 </html>
