@@ -19,11 +19,11 @@
     <div class="d-flex flex-column">
         <div class="p-2">
             <div class="btn-group btn-group-justified">
-                <a href="#" class="btn btn-primary" onclick="generateNumberByLevel(1)">1 - 1000</a>
-                <a href="#" class="btn btn-primary" onclick="generateNumberByLevel(2)">1,000 - 100,000</a>
-                <a href="#" class="btn btn-primary" onclick="generateNumberByLevel(3)">100,000 - 1,000,000</a>
-                <a href="#" class="btn btn-primary" onclick="generateNumberByLevel(4)">1,000,000 - 1,000,000,000</a>
-                <a href="#" class="btn btn-primary" onclick="generateNumberByLevel(5)">random</a>
+                <a href="#" class="btn btn-primary" onclick="generateNumberByLevel(1)">1 - 100</a>
+                <a href="#" class="btn btn-primary" onclick="generateNumberByLevel(2)">100 - 10,000</a>
+                <a href="#" class="btn btn-primary" onclick="generateNumberByLevel(3)">10,000 - 1,000,000</a>
+                <a href="#" class="btn btn-primary" onclick="generateNumberByLevel(4)">1,000,000 - 100,000,000</a>
+                <a href="#" class="btn btn-primary" onclick="generateNumberByLevel(generateRandomLevel())">random</a>
             </div>
         </div>
 
@@ -53,40 +53,32 @@
     function generateNumberByLevel(level) {
         let min =0 , max =10;
 
-        switch(level) {
-            case 1:
-                min = 1;
-                max = 1000;
-                break;
-            case 2:
-                min = 1000;
-                max = 100000;
-                break;
-            case 3:
-                min = 100000;
-                max = 1000000;
-                break;
-            case 4:
-                min = 1000000;
-                max = 1000000000;
-                break;
-            case 5:
-                min = 0;
-                max = 1000000000;
-                break;
-            default:
-                min = document.getElementById("min").value;
-                max = document.getElementById("max").value;
+        if(level) {
+            min = Math.pow(10, 2* (level-1));
+            max = Math.pow(10, 2*level);
+        } else {
+            min = document.getElementById("min").value;
+            max = document.getElementById("max").value;
         }
+
         document.getElementById("min").value = min;
         document.getElementById("max").value = max;
-
-        var generatedNumber = Math.floor(Math.random() * (+max - +min)) + +min;
+        const generatedNumber = generateRandomInteger(min, max);
         document.getElementById("generatedNumber").innerHTML = numberWithCommas(generatedNumber);
+    }
+
+    function generateRandomLevel() {
+        const min =0, max = 5;
+        return generateRandomInteger(min, max);
     }
 
     function numberWithCommas(x) {
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
+
+    function generateRandomInteger(min, max) {
+        return Math.floor(Math.random() * (+max - +min)) + +min;
+    }
+
 </script>
 </html>
