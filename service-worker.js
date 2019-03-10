@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/pterandomnumbergenerator/precache-manifest.f1725e933f94aec5b9e36c9920fb4825.js"
+  "/pterandomnumbergenerator/src/precache-manifest.f7432d565820ddf9e7440fa40e33bc7c.js"
 );
 
 workbox.clientsClaim();
@@ -28,7 +28,7 @@ self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute("/pterandomnumbergenerator/index.html", {
+workbox.routing.registerNavigationRoute("/pterandomnumbergenerator/src/index.html", {
   
   blacklist: [/^\/_/,/\/[^\/]+\.[^\/]+$/],
 });
