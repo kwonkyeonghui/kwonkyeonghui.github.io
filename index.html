@@ -64,7 +64,7 @@
         document.getElementById("min").value = min;
         document.getElementById("max").value = max;
         
-        const generatedNumber = Math.floor(Math.random() * (max - min + 1) + min);
+        const generatedNumber = Math.floor(Math.random() * (max - min + 1)) + min;
         document.getElementById("generatedNumber").innerHTML = numberWithCommas(generatedNumber);
     }
 
@@ -78,7 +78,7 @@
     }
 
     function generateRandomInteger(min, max) {
-        return Math.floor(Math.random() * (max - min + 1) + min);
+        return Math.floor(Math.random() * (max - min + 1)) + min;
     }
 
 </script>
